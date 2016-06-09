@@ -6,7 +6,7 @@ exports.metricsPOST = function(args, res, next) {
   * metrics (Metrics)
   **/
   // no response value expected for this operation
-  if(args.metrics.value){
+  if(args.metrics.value && Object.keys(args.metrics.value).length > 0){
       var metrics = args.metrics.value;
       insertMetrics(metrics, (data) => {
           res.sendStatus(201);
@@ -15,7 +15,7 @@ exports.metricsPOST = function(args, res, next) {
           res.send(new error(500, err));
       });
   }else{
-      res.setStatus(400);
+      res.status(400);
       res.send(new error(400, "Bad request, metrics body is required"));
   }
 
