@@ -1,0 +1,103 @@
+---
+swagger: "2.0"
+info:
+  description: "A governify implementation of SLA Metrics endpoint from SLA4OAI specification"
+  version: "1.0.0"
+  title: "Monitor"
+  termsOfService: "http://metrics.sla4oai.governify.io/terms/"
+  contact:
+    name: "ISA Group"
+    url: "http://governify.io"
+    email: "isagroup.us@gmail.com"
+  license:
+    name: Apache License 2.0
+    url: "http://www.apache.org/licenses/"
+basePath: "/api/v1"
+schemes:
+- "https"
+- "http"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /metrics:
+    post:
+      tags:
+        - metrics
+      description: >-
+        The SLA Metrics exposes an endpoint for gathering the metrics
+        collected  from different nodes.
+      operationId: "metricsPOST"
+      parameters:
+      - in: "body"
+        name: "metrics"
+        description: "Measures and metadata of metrics ."
+        required: true
+        schema:
+          $ref: "#/definitions/metrics"
+      responses:
+        201:
+          description: "Metrics have been added."
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/errorModel"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/errorModel"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/errorModel"
+      x-swagger-router-controller: "Default"
+definitions:
+  metrics:
+    type: "object"
+    properties:
+      sla:
+        type: "string"
+      scope:
+        type: "object"
+        properties: {}
+      sender:
+        $ref: "#/definitions/metrics_sender"
+      measures:
+        type: "array"
+        items:
+          $ref: "#/definitions/measure"
+  measure:
+    type: "object"
+    properties:
+      resouce:
+        type: "string"
+      method:
+        type: "string"
+      result:
+        type: "integer"
+        format: "int64"
+      ts:
+        type: "string"
+      metrics:
+        type: "object"
+        properties: {}
+  errorModel:
+    type: "object"
+    required:
+    - "code"
+    - "message"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+  metrics_sender:
+    properties:
+      host:
+        type: "string"
+      environment:
+        type: "string"
+      cluster:
+        type: "string"
