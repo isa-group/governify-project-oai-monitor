@@ -2,7 +2,7 @@
 production:
   services:
     registry:
-      uri: "http://registry.oai.governify.io/api/"
+      uri: "http://registry/api/"
       apiVersion: v1
   port: 80
   logger: 'info'
