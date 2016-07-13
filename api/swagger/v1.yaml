@@ -64,7 +64,7 @@ paths:
           description: "Unexpected error"
           schema:
             $ref: "#/definitions/errorModel"
-      x-swagger-router-controller: "Default"
+      x-swagger-router-controller: "Metrics"
 definitions:
   metrics:
     type: "object"
@@ -83,7 +83,7 @@ definitions:
   measure:
     type: "object"
     properties:
-      resouce:
+      resource:
         type: "string"
       method:
         type: "string"

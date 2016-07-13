@@ -1,5 +1,5 @@
 {
-  "name": "monitor",
+  "name": "oai-monitor",
   "version": "1.0.0",
   "description": "A governify implementation of SLA Metrics endpoint from SLA4OAI specification",
   "main": "index.js",
@@ -16,6 +16,8 @@
     "cors": "^2.7.1",
     "express": "^4.13.4",
     "js-yaml": "^3.3.0",
-    "swagger-tools": "0.10.1"
+    "request": "^2.73.0",
+    "swagger-tools": "0.10.1",
+    "winston": "^2.2.0"
   }
 }

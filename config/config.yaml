@@ -1,0 +1,15 @@
+---
+production:
+  services:
+    registry:
+      uri: "http://registry.oai.governify.io/api/"
+      apiVersion: v1
+  port: 80
+  logger: 'info'
+development:
+  services:
+    registry:
+      uri: "http://localhost:8081/api/"
+      apiVersion: v1
+  port: 5030
+  logger: 'debug'
