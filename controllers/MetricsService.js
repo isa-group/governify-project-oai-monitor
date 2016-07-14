@@ -41,7 +41,7 @@ function insertMetrics(metrics, successCb, errorCb){
     getAgreementById(metrics, (agreement) => {
         metrics.measures.forEach((element)=>{
             var uri = baseURI + "requests/increase"
-            var scope = {resource: element.resource, operation: element.method, level: "account"};
+            var scope = {resource: element.resource.split('?')[0], operation: element.method.toLowerCase(), level: "account"};
 
 
             logger.debug(JSON.stringify(getPeriodsByScope(scope, agreement, "requests"), null, 2));
