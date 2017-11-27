@@ -2,7 +2,7 @@
 production:
   services:
     registry:
-      uri: "http://registry:8081/api/"
+      uri: "http://registry:80/api/"
       apiVersion: v1
   port: 80
   logger: 'info'
